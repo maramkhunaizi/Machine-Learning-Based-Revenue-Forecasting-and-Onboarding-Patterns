@@ -1,0 +1,25 @@
+Each notebook runs the full pipeline for one region: data cleaning, feature engineering,
+model training and comparison, evaluation, and forecasting.
+
+## Objective 1 — Revenue Forecasting (Completed)
+
+- **Regions:** Bahrain (AFS, AUB), Oman (ABO, SOH), Egypt, UAE
+- **Pipeline (per notebook):**
+  - Data cleaning — duplicate-date resolution, outage detection, missing-day imputation
+  - Feature engineering — lag and rolling-window features, day-of-week and holiday flags,
+    and Hijri-calendar indicators (Ramadan, Eid) to capture Islamic-calendar seasonality
+  - Modelling — Decision Tree (baseline), Random Forest, Gradient Boosting, XGBoost
+  - Evaluation — MAPE, MAE, RMSE
+  - Forecasting — recursive daily forecast with visualisation
+- **Result:** MAPE of 6–11% across regions
+
+## Objective 2 — Merchant Potential Classification (Not Yet Started)
+
+Planned approach:
+- Derive merchant **age** from onboarding date
+- Engineer a **value-tier** label (low / medium / high) from transaction activity
+- Train a supervised classifier to predict new-merchant potential from early-life features
+
+## Tools
+
+Python, pandas, scikit-learn, XGBoost, LightGBM, statsmodels, hijridate, matplotlib.
