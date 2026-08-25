@@ -8,18 +8,28 @@ model training and comparison, evaluation, and forecasting.
   - Data cleaning — duplicate-date resolution, outage detection, missing-day imputation
   - Feature engineering — lag and rolling-window features, day-of-week and holiday flags,
     and Hijri-calendar indicators (Ramadan, Eid) to capture Islamic-calendar seasonality
-  - Modelling — Decision Tree (baseline), Random Forest, Gradient Boosting, XGBoost
+  - Modelling — Linear Regression (baseline), Random Forest, Gradient Boosting, XGBoost
   - Evaluation — MAPE, MAE, RMSE
   - Forecasting — recursive daily forecast with visualisation
 - **Result:** MAPE of 6–11% across regions
 
-## Objective 2 — Merchant Potential Classification (Not Yet Started)
+## Objective 2 — Merchant Value Classification (Completed)
 
-Planned approach:
-- Derive merchant **age** from onboarding date
-- Engineer a **value-tier** label (low / medium / high) from transaction activity
-- Train a supervised classifier to predict new-merchant potential from early-life features
+- **Regions:** Bahrain (AFS, AUB), Oman (ABO, SOH), Egypt, UAE
+- **Pipeline (per notebook):**
+  - Data cleaning — deduplication, missing-value handling, merchant record consolidation
+  - Feature engineering — merchant age from onboarding date, early-life (first 6 months)
+    transaction behaviour, business type encoding
+  - Labelling — value-tier label (Low / Medium / High) derived from later transaction
+    volume, using a fixed later-period label window to avoid data leakage
+  - Class imbalance handling — SMOTE applied within cross-validation folds
+  - Modelling — Logistic Regression (baseline), Random Forest, Gradient Boosting, XGBoost,
+    CatBoost
+  - Evaluation — Accuracy, Precision, Recall, F1-score, AUC-ROC
+- **Result:** Best-performing model varied by region; tree-based ensembles consistently
+  outperformed the logistic regression baseline
 
 ## Tools
 
-Python, pandas, scikit-learn, XGBoost, LightGBM, statsmodels, hijridate, matplotlib.
+Python, pandas, numpy, scikit-learn, XGBoost, CatBoost, LightGBM, imbalanced-learn (SMOTE),
+statsmodels, hijridate, holidays, matplotlib, seaborn, plotly
