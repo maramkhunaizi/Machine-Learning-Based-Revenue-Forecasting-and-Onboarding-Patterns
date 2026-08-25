@@ -7,7 +7,7 @@ model training and comparison, evaluation, and forecasting.
 - **Pipeline (per notebook):**
   - Data cleaning — duplicate-date resolution, outage detection, missing-day imputation
   - Feature engineering — lag and rolling-window features, day-of-week and holiday flags,
-    and Hijri-calendar indicators (Ramadan, Eid) to capture Islamic-calendar seasonality
+    and Hijri-calendar indicators to capture Islamic-calendar seasonality
   - Modelling — Linear Regression (baseline), Random Forest, Gradient Boosting, XGBoost
   - Evaluation — MAPE, MAE, RMSE
   - Forecasting — recursive daily forecast with visualisation
